@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <script src="src/index.js"></script>
+    <link rel="stylesheet" href="style/index.css" />
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <!--Basic calculator-->
+    <div class="standard-main" id="std-main">
+      <div class="title">&nbsp;&nbsp;Calculator</div>
+      <!--header-->
+      <div class="result">
+        <!--name of calculator-->
+        <div class="type" id="std-show-bar">☰&nbsp;Basic</div>
+        <!--empty-->
+        <div class="pre" id="std-pre-step">&nbsp;</div>
+        <!--default value-->
+        <div class="second" id="std-show-input">0</div>
+      </div>
+      <!--main functions-->
+      <ul id="std-top-symbol">
+        <li value="17">%</li>
+        <li value="18">√</li>
+        <li value="19"><img src="images/square.png" style="height: 18px" /></li>
+        <li value="20"><img src="images/denominator.png" /></li>
+      </ul>
+      <!--main functionality-->
+      <ul id="std-num-symbol">
+        <li value="37">CE</li>
+        <li value="38">C</li>
+        <li value="39">Back</li>
+        <li value="16">÷</li>
+        <li class="number" value="7">7</li>
+        <li class="number" value="8">8</li>
+        <li class="number" value="9">9</li>
+        <li value="15">×</li>
+        <li class="number" value="4">4</li>
+        <li class="number" value="5">5</li>
+        <li class="number" value="6">6</li>
+        <li value="14">-</li>
+        <li class="number" value="1">1</li>
+        <li class="number" value="2">2</li>
+        <li class="number" value="3">3</li>
+        <li value="13">+</li>
+        <li value="11">±</li>
+        <li class="number" value="0">0</li>
+        <li value="10">.</li>
+        <li value="12">=</li>
+      </ul>
+      <!--Select block-->
+      <ul class="type-bar" id="std-type-bar">
+        <li class="active">Basic</li>
+        <li value="2">Science</li>
+      </ul>
+    </div>
+
+    <!--Science calculator-->
+    <div class="science-main" id="sci-main">
+      <div class="title">&nbsp;&nbsp;Calculator</div>
+      <!--header-->
+      <div class="sci-result">
+        <!--name of calculator-->
+        <div class="type" id="sci-show-bar">☰&nbsp;Science</div>
+        <!--empty-->
+        <div class="pre" id="sci-pre-step">&nbsp;</div>
+        <!--default value-->
+        <div class="second" id="sci-show-input">0</div>
+      </div>
+      <!--functions-->
+      <ul id="sci-top-symbol">
+        <li value="21">(</li>
+        <li value="22">)</li>
+        <li value="23">
+          <img src="images/sqrt.png" style="height: 18px; width: 22px" />
+        </li>
+        <li value="24">n!</li>
+        <li value="25">exp</li>
+        <li value="19"><img src="images/square.png" style="height: 18px" /></li>
+        <li value="26"><img src="images/degree.png" style="height: 18px" /></li>
+        <li value="27">sin</li>
+        <li value="28">cos</li>
+        <li value="29">tan</li>
+        <li value="30"><img src="images/10_degree.png" /></li>
+        <li value="31">log</li>
+        <li value="32">arcsin</li>
+        <li value="33">arccos</li>
+        <li value="34">arctan</li>
+      </ul>
+      <!--main functionality-->
+      <ul id="sci-num-symbol">
+        <li value="35">π</li>
+        <li value="37">CE</li>
+        <li value="38">C</li>
+        <li value="39">Back</li>
+        <li value="16">÷</li>
+        <li value="18">√</li>
+        <li value="7" class="number">7</li>
+        <li value="8" class="number">8</li>
+        <li value="9" class="number">9</li>
+        <li value="15">×</li>
+        <li value="17">%</li>
+        <li value="4" class="number">4</li>
+        <li value="5" class="number">5</li>
+        <li value="6" class="number">6</li>
+        <li value="14">-</li>
+        <li value="20"><img src="images/denominator.png" /></li>
+        <li value="1" class="number">1</li>
+        <li value="2" class="number">2</li>
+        <li value="3" class="number">3</li>
+        <li value="13">+</li>
+        <li value="36">↑</li>
+        <li value="11">±</li>
+        <li value="0" class="number">0</li>
+        <li value="10">.</li>
+        <li value="12">=</li>
+      </ul>
+      <!--Select block-->
+      <ul class="type-bar" id="sci-type-bar">
+        <li value="1">Basic</li>
+        <li class="active">Science</li>
+      </ul>
+    </div>
+  </body>
+</html>
