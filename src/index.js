@@ -281,7 +281,7 @@ const createCalculator = () => {
                         break;
                     case 25:
                         cal.unaryOperate((si) =>  {
-                            return [si.toexponential(7)];
+                            return [si.toExponential(7)];
                         });
                         break;
                     case 27:
@@ -446,8 +446,8 @@ const createCalculator = () => {
         },
         calculate: () => {
             if (!cal.isPreInputEquals) {
-                let si = cal.getShowInput(),
-                    result;
+                let si = cal.getShowInput();
+                let result;
                 if (cal.isNumber(si)) {
                     cal.operandStack.push(si);
                     result = cal.checkLength(cal.travelStack());
