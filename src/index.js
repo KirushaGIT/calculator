@@ -1,9 +1,11 @@
+// Initialization calculator on load window
 window.onload = () => {
     const Calculator = createCalculator();
     Calculator.initCache();
     Calculator.initListeners();
 };
 
+// Main part of logic
 const createCalculator = () => {
     let cal = {
         keyCodes: {
