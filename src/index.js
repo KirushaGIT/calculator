@@ -263,7 +263,7 @@ const createCalculator = () => {
                         break;
                     case 20:
                         cal.unaryOperate((si) =>  {
-                            return [si === 0 ? "error delete to zero" : 1 / si, "1/"];
+                            return [si === 0 ? "Infinity" : 1 / si, "1/"];
                         });
                         break;
                     case 24:
@@ -416,8 +416,8 @@ const createCalculator = () => {
             if (cal.type === 3) {
                 cal.resetScales();
             }
-            let si = cal.getShowInput(),
-                pi = cal.getPreStep();
+            let si = cal.getShowInput();
+            let pi = cal.getPreStep();
             if (cal.isNumber(si)) {
                 cal.operandStack.push(si);
                 cal.setPreStep(cal.getPreStep() + ((cal.isPreInputUnaryOperator || pi.charAt(pi.length - 1) === ")") ?
@@ -533,6 +533,7 @@ const createCalculator = () => {
             if (cal.isFloat(valueStr)) {
                 valueStr = valueStr.replace(/0+$/, "");
             }
+            console.log(value, typeof value)
             return valueStr.length > 12 ? value.toFixed(7) : valueStr;
         },
         //CE
