@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = () => {
     const Calculator = createCalculator();
     Calculator.initCache();
     Calculator.initListeners();
@@ -78,13 +78,13 @@ const createCalculator = () => {
             preStep: null,
             scaleSpans: null
         },
-        getShowInput: function () {
+        getShowInput: () => {
             return cal.cache.showInput.innerHTML;
         },
         setShowInput: (value) => {
             cal.cache.showInput.innerHTML = value;
         },
-        getPreStep: function () {
+        getPreStep: () => {
             return cal.cache.preStep.innerHTML;
         },
         setPreStep: (value) => {
@@ -114,7 +114,7 @@ const createCalculator = () => {
             "yroot": 5,
             "(": 6
         },
-        initCache: function () {
+        initCache: () => {
             let prefix = cal.typePrefix[cal.type];
             cal.cache.showInput = document.getElementById(prefix + "show-input");
             cal.cache.preStep = document.getElementById(prefix + "pre-step");
@@ -123,23 +123,23 @@ const createCalculator = () => {
             }
         },
         listeners: {
-            mouseHoverListener: function (e) {
+            mouseHoverListener: (e) => {
                 let event = e || window.event;
                 event.currentTarget.style.backgroundColor = cal.constants.mouseHoverColor;
             },
-            firstMouseOutListener: function (e) {
+            firstMouseOutListener: (e) => {
                 let event = e || window.event;
                 event.currentTarget.style.backgroundColor = cal.constants.firstMouseOutColor;
             },
-            mouseOutListener: function (e) {
+            mouseOutListener: (e) => {
                 let event = e || window.event;
                 event.currentTarget.style.backgroundColor = cal.constants.mouseOutColor;
             },
-            keyPressListener: function (e) {
+            keyPressListener: (e) => {
                 let event = e || window.event;
                 cal.handleKey(event.currentTarget.value);
             },
-            toggleTypeBarListener: function () {
+            toggleTypeBarListener: () => {
                 let bar = document.getElementById(cal.typePrefix[cal.type] + "type-bar");
                 if (bar.style.display === "block") {
                     bar.style.display = "none";
@@ -147,11 +147,11 @@ const createCalculator = () => {
                     bar.style.display = "block";
                 }
             },
-            switchTypeListener: function (e) {
+            switchTypeListener: (e) => {
                 let event = e || window.event;
                 cal.switchType(parseInt(event.currentTarget.value));
             },
-            switchScaleListener: function (e) {
+            switchScaleListener: (e) => {
                 let event = e || window.event;
                 let scales = document.getElementById("pro-scales").getElementsByTagName("div"),
                     scale = parseInt(event.currentTarget.getAttribute("scale")),
@@ -192,11 +192,11 @@ const createCalculator = () => {
                 }
                 cal.currentScale = scale;
             },
-            _initFirstRowListeners: function () {
+            _initFirstRowListeners: () => {
                 let lis = document.getElementById(cal.typePrefix[cal.type] + "top-symbol").getElementsByTagName("li");
                 cal.rebuildButtons(lis, cal.listeners.firstMouseOutListener);
             },
-            _initSecondRowListeners: function () {
+            _initSecondRowListeners: () => {
                 let lis = document.getElementById(cal.typePrefix[cal.type] + "num-symbol").getElementsByTagName("li");
                 cal.rebuildButtons(lis, cal.listeners.mouseOutListener);
                 if (cal.type === 3) {
@@ -204,7 +204,7 @@ const createCalculator = () => {
                 }
             }
         },
-        initListeners: function () {
+        initListeners: () => {
             let prefix = cal.typePrefix[cal.type];
             if (cal.type < 3) {
                 cal.listeners._initFirstRowListeners();
@@ -239,7 +239,7 @@ const createCalculator = () => {
             } else {
                 switch (keyCode) {
                     case 11:
-                        cal.unaryOperate(function (oldValue) {
+                        cal.unaryOperate((oldValue) => {
                             oldValue += "";
                             if (oldValue === "0") {
                                 return [oldValue];
@@ -252,22 +252,22 @@ const createCalculator = () => {
                         });
                         break;
                     case 18:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.sqrt(si), "sqrt"];
                         });
                         break;
                     case 19:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.pow(si, 2), "sqr"];
                         });
                         break;
                     case 20:
-                        cal.unaryOperate(function (si) {
-                            return [si === 0 ? "0不能作为被除数" : 1 / si, "1/"];
+                        cal.unaryOperate((si) =>  {
+                            return [si === 0 ? "error delete to zero" : 1 / si, "1/"];
                         });
                         break;
                     case 24:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             if (si < 0) {
                                 si = (0 - si);
                             }
@@ -278,64 +278,64 @@ const createCalculator = () => {
                         });
                         break;
                     case 25:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [si.toexponential(7)];
                         });
                         break;
                     case 27:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.sin(si), "sin"];
                         });
                         break;
                         //cos
                     case 28:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.cos(si), "cos"];
                         });
                         break;
                         //tan
                     case 29:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.tan(si), "tan"];
                         });
                         break;
                     case 30:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.pow(10, si), "powten"];
                         });
                         break;
                         //log
                     case 31:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.log10(si), "log"];
                         });
                         break;
                         //sinh
                     case 32:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.sinh(si), "sinh"];
                         });
                         break;
                         //cosh()
                     case 33:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.cosh(si), "cosh"];
                         });
                         break;
                         //tanh()
                     case 34:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.tanh(si), "tanh"];
                         });
                         break;
                         //π
                     case 35:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             return [Math.PI];
                         });
                         break;
                     case 48:
-                        cal.unaryOperate(function (si) {
+                        cal.unaryOperate((si) =>  {
                             let result = eval("~" + si);
                             cal.showScales(result);
                             return [result];
@@ -387,7 +387,7 @@ const createCalculator = () => {
                 }
             }
         },
-        unaryOperate: function (operation) {
+        unaryOperate: (operation) => {
             let si = cal.getShowInput(),
                 result;
             if (cal.isInteger(si)) {
@@ -412,7 +412,7 @@ const createCalculator = () => {
             }
             cal.isPreInputBinaryOperator = false;
         },
-        binaryOperate: function (operator, facade) {
+        binaryOperate: (operator, facade) => {
             if (cal.type === 3) {
                 cal.resetScales();
             }
@@ -442,7 +442,7 @@ const createCalculator = () => {
             cal.isPreInputUnaryOperator = false;
             cal.isPreInputEquals = false;
         },
-        calculate: function () {
+        calculate: () => {
             if (!cal.isPreInputEquals) {
                 let si = cal.getShowInput(),
                     result;
@@ -461,7 +461,7 @@ const createCalculator = () => {
                 cal.isPreInputEquals = true;
             }
         },
-        travelStack: function (level, minPri) {
+        travelStack: (level, minPri) => {
             let op, f, s,
                 result = cal.operandStack[cal.operandStack.length - 1],
                 l = level || cal.operatorStack.length,
@@ -479,7 +479,7 @@ const createCalculator = () => {
             }
             return result;
         },
-        rightTag: function () {
+        rightTag: () => {
             let si = cal.getShowInput();
             if (cal.isNumber(si)) {
                 cal.setPreStep(cal.getPreStep() + (" " + si + " )"));
@@ -496,7 +496,7 @@ const createCalculator = () => {
                 cal.setShowInput(cal.checkLength(cal.operandStack.pop()));
             }
         },
-        _stackHelper: function (f, s, op) {
+        _stackHelper: (f, s, op) => {
             let result;
             if (op === "^") {
                 result = Math.pow(f, s);
@@ -533,17 +533,17 @@ const createCalculator = () => {
             if (cal.isFloat(valueStr)) {
                 valueStr = valueStr.replace(/0+$/, "");
             }
-            return valueStr.length > 12 ? value.toexponential(7) : valueStr;
+            return valueStr.length > 12 ? value.toFixed(7) : valueStr;
         },
         //CE
-        ce: function () {
+        ce: () => {
             cal.setShowInput("0");
             if (cal.type === 3) {
                 cal.resetScales();
             }
         },
         //C
-        clear: function () {
+        clear: () => {
             cal.setShowInput("0");
             cal.setPreStep("&nbsp;");
             cal._reset();
@@ -551,23 +551,23 @@ const createCalculator = () => {
                 cal.resetScales();
             }
         },
-        resetScales: function () {
+        resetScales: () => {
             for (let i = 0; i < 4; i++) {
                 cal.cache.scaleSpans[i].innerHTML = "0";
             }
         },
-        back: function () {
+        back: () => {
             let oldValue = cal.cache.showInput.innerText;
             cal.setShowInput(oldValue.length < 2 ? "0" : oldValue.substring(0, oldValue.length - 1));
         },
-        showScales: function (num) {
+        showScales: (num) => {
             let result = cal.calculateScales(num),
                 spans = cal.cache.scaleSpans;
             for (let i = 0; i < 4; ++i) {
                 spans[i].innerHTML = result[i];
             }
         },
-        calculateScales: function (num) {
+        calculateScales: (num) => {
             let scale = cal.currentScale,
                 result = [],
                 i;
@@ -686,7 +686,7 @@ const createCalculator = () => {
         fact: (() => {
             let cache = [1];
 
-            function factorial(n) {
+            const factorial = (n) => {
                 let result = cache[n - 1];
                 if (result == null) {
                     result = 1;
