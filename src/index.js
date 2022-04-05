@@ -535,7 +535,6 @@ const createCalculator = () => {
             if (cal.isFloat(valueStr)) {
                 valueStr = valueStr.replace(/0+$/, "");
             }
-            console.log(value, typeof value)
             return valueStr.length > 12 ? value.toFixed(7) : valueStr;
         },
         //CE
